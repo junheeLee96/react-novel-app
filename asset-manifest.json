@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-novel-app/static/css/main.e6c13ad2.css",
+    "main.js": "/react-novel-app/static/js/main.046ed0e6.js",
+    "static/js/787.7b5a6b24.chunk.js": "/react-novel-app/static/js/787.7b5a6b24.chunk.js",
+    "index.html": "/react-novel-app/index.html",
+    "main.e6c13ad2.css.map": "/react-novel-app/static/css/main.e6c13ad2.css.map",
+    "main.046ed0e6.js.map": "/react-novel-app/static/js/main.046ed0e6.js.map",
+    "787.7b5a6b24.chunk.js.map": "/react-novel-app/static/js/787.7b5a6b24.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.046ed0e6.js"
+  ]
+}
