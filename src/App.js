@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import AppRouter from './routes/AppRouter';
+import { authService } from './fBase';
 
-function App() {
+const App = () => {
+  const [init, setInit] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
+  const [userObj, setUserObj] = useState(null);
+
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+        setUserObj({
+          displayName: user.displayName,
+          uid: user.uid,
+          updateProfile: (args) => user.updateProfile(args),
+        });
+      } else {
+        setIsLoggedIn(false);
+      }
+      setInit(true);
+    });
+    console.log(authService.currentUser);
+  }, []);
+
+  const refreshUser = () => {
+    const user = authService.currentUser;
+    setUserObj(Object.assign({}, user));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {init ? (
+        <AppRouter
+          isLoggedIn={isLoggedIn}
+          userObj={userObj}
+          refreshUser={refreshUser}
+        />
+      ) : (
+        'Initialzing...'
+      )}
+    </>
   );
-}
+};
 
 export default App;
