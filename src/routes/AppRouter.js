@@ -5,6 +5,7 @@ import Navigation from '../components/Navigation';
 import Auth from './Auth';
 import Createnovel from '../components/Createnovel';
 import axios from 'axios';
+import Editprofile from '../components/Editprofile';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
   useEffect(() => {
@@ -22,24 +23,23 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
 
   return (
     <div>
-      <BrowserRouter>
-        {isLoggedIn && <Navigation />}
-        <Routes>
-          {isLoggedIn ? (
+      {isLoggedIn && <Navigation isLoggedIn={isLoggedIn} userObj={userObj} />}
+      <Routes>
+        {isLoggedIn ? (
+          <>
             <>
-              <>
-                <Route path="/" element={<Home />} />
-                <Route
-                  path="createnovel"
-                  element={<Createnovel userObj={userObj} />}
-                />
-              </>
+              <Route path="/" element={<Home />} />
+              <Route
+                path="createnovel"
+                element={<Createnovel userObj={userObj} />}
+              />
+              <Route path="editprofile" element={<Editprofile />} />
             </>
-          ) : (
-            <Route path="/" element={<Auth />} />
-          )}
-        </Routes>
-      </BrowserRouter>
+          </>
+        ) : (
+          <Route path="/" element={<Auth />} />
+        )}
+      </Routes>
     </div>
   );
 };
