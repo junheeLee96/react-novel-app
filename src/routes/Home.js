@@ -16,6 +16,10 @@ const Home = () => {
     get();
   }, []);
 
+  useEffect(() => {
+    console.log(getnovel);
+  }, [getnovel]);
+
   return (
     <div>
       im Home
@@ -25,6 +29,7 @@ const Home = () => {
               key={idx}
               title={novel.title}
               displayName={novel.displayName}
+              image={novel.image}
             />
           ))
         : ''}

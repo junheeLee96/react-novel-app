@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import '../css/Createnovel.css';
 import axios from 'axios';
+
+const BASE_URL = 'http://localhost:8000';
 
 const Createnovel = ({ userObj }) => {
   const [createnovel, setCreatenovel] = useState({
@@ -10,8 +12,16 @@ const Createnovel = ({ userObj }) => {
     plot: '',
   });
 
-  // const [alretmessage, setAlretmessage] = useState(null);
-  //const [messagecondition, setMessagecondition] = useState(false);
+  const [alretmessage, setAlretmessage] = useState(null);
+  const [messagecondition, setMessagecondition] = useState(false);
+
+  const [attachment, setAttachment] = useState();
+
+  const [content, setContent] = useState('');
+  const [uploadedImg, setUploadedImg] = useState({
+    fileName: '',
+    fillPath: '',
+  });
 
   const getValue = (e) => {
     const { name, value } = e.target;
@@ -21,17 +31,52 @@ const Createnovel = ({ userObj }) => {
     });
   };
 
-  const onCreatenovelBtnClick = async () => {
+  const onCreatenovelBtnClick = () => {
     const id = userObj.uid;
+    const formData = new FormData();
+    formData.append('img', content);
+    /* axios
+      .post('http://localhost:8000/upload', formData)
+      .then((res) => {
+        const { fileName } = res.data;
+        console.log(fileName);
+        setUploadedImg({
+          fileName,
+          filePath: `../server/public/img/${fileName}`,
+        });
+        console.log(uploadedImg);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+      */
 
-    await axios.post('http://localhost:8000/api/create', {
-      title: createnovel.title,
-      plot: createnovel.plot,
-      id: id,
-      displayName: userObj.displayName,
-    });
+    axios
+      .post('http://localhost:8000/upload', formData)
+      .then((res) => {
+        axios.post('http://localhost:8000/api/create', {
+          title: createnovel.title,
+          plot: createnovel.plot,
+          id: id,
+          displayName: userObj.displayName,
+          image: res.data.fileName,
+        });
+      })
+      .catch((err) => console.log(err));
+
+    /*
+    axios
+      .post('http://localhost:8000/api/create', {
+        title: createnovel.title,
+        plot: createnovel.plot,
+        id: id,
+        displayName: userObj.displayName,
+      })
+      .then((title) => {
+        console.log(console.log(title.data));
+      });*/
   };
-  /*
+
   useEffect(() => {
     if (alretmessage) {
       setMessagecondition(true);
@@ -44,18 +89,44 @@ const Createnovel = ({ userObj }) => {
     setMessagecondition(false);
   };
 
-  useEffect(() => {
-    return () => {
-      setAlretmessage(null);
-      setMessagecondition(false);
-      setCreatenovel({ title: '', plot: '' });
+  /*
+  const onFileChange = (e) => {
+    const {
+      target: { files },
+    } = e;
+    const theFile = files[0];
+    const reader = new FileReader();
+    reader.onloadend = (finishEvent) => {
+      const {
+        currentTarget: { result },
+      } = finishEvent;
+      setAttachment(result);
     };
-  }, []);
-  */
+    reader.readAsDataURL(theFile);
+  };
+
+  const fileInput = useRef();
+
+  const onClearAttachment = () => {
+    setAttachment(null);
+    fileInput.current.value = null;
+  };
+*/
+
+  const onChangeI = (e) => {
+    setContent(e.target.files[0]);
+  };
+
+  const onSubmitF = (e) => {
+    e.preventDefault();
+  };
+
+  useEffect(() => {
+    console.log(uploadedImg);
+  }, [uploadedImg]);
 
   return (
     <div className="Createnovel">
-      {/* 
       {messagecondition && alretmessage ? (
         <div className="message_container">
           <div className="message_top">
@@ -69,7 +140,6 @@ const Createnovel = ({ userObj }) => {
       ) : (
         ''
       )}
-          */}
 
       <div className="form-wrapper">
         <input
@@ -92,12 +162,38 @@ const Createnovel = ({ userObj }) => {
           }}
         />
       </div>
-      <form method="post" enctype="multipart/form-data">
-        <div class="button">
-          <label for="chooseFile">👉 CLICK HERE! 👈</label>
-        </div>
-        <input type="file" id="chooseFile" name="chooseFile" accept="image/*" />
-      </form>
+      {/*
+        <form method="post" encType="multipart/form-data">
+        <div className="button"></div>
+        <input
+          type="file"
+          accept="image/*"
+          ref={fileInput}
+          onChange={onFileChange}
+        />
+        {attachment && (
+          <div>
+            <img src={attachment} width="50px" height="50px" />
+            <button onClick={onClearAttachment}>Clear</button>
+          </div>
+        )}
+        </form>
+        */}
+
+      <>
+        <form onSubmit={onSubmitF}>
+          {uploadedImg ? (
+            <>
+              <img src={uploadedImg.fillPath} alt="" />
+              <h3>{uploadedImg.fileName}</h3>
+            </>
+          ) : (
+            ''
+          )}
+          <input type="file" onChange={onChangeI} />
+        </form>
+      </>
+
       <button className="submit-button" onClick={onCreatenovelBtnClick}>
         입력
       </button>
