@@ -7,6 +7,7 @@ import Createnovel from '../components/Createnovel';
 import axios from 'axios';
 import Editprofile from '../components/Editprofile';
 import Novelabout from 'components/Novelabout';
+import NovelAdd from 'components/NovelAdd';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
   const [Ntitle, getNtitle] = useState();
@@ -41,17 +42,23 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
             <>
               <Route
                 path="/"
-                element={<Home getFromhomeTitle={getFromhomeTitle} />}
+                element={
+                  <Home getFromhomeTitle={getFromhomeTitle} userObj={userObj} />
+                }
               />
               <Route
                 path="/novel/:title"
-                element={<Novelabout Ntitle={Ntitle} />}
+                element={<Novelabout Ntitle={Ntitle} userObj={userObj} />}
               />
               <Route
                 path="createnovel"
                 element={<Createnovel userObj={userObj} />}
               />
               <Route path="editprofile" element={<Editprofile />} />
+              <Route
+                path="/addnovel/:title"
+                element={<NovelAdd userObj={userObj} />}
+              />
             </>
           </>
         ) : (

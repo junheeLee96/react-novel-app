@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Novel from '../components/Novel';
 
-const Home = ({ getFromhomeTitle }) => {
+const Home = ({ getFromhomeTitle, userObj }) => {
   const titleGet = (t) => {
     getFromhomeTitle(t);
   };
@@ -33,7 +33,7 @@ const Home = ({ getFromhomeTitle }) => {
               titleGet={titleGet}
             />
           ))
-        : ''}
+        : 'Loading...'}
     </div>
   );
 };

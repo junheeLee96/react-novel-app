@@ -3,7 +3,6 @@ import '../css/NovelaboutSubtitle.css';
 import { Link } from 'react-router-dom';
 
 const NovelaboutSubtitle = ({ idx, subtitle }) => {
-  console.log(subtitle);
   return (
     <div>
       <p className="NovelaboutSubtitle">

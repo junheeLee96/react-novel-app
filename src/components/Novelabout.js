@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import NovelaboutSubtitle from './NovelaboutSubtitle';
+import OwnNovelEdit from './OwnNovelEdit';
+import GetNovelPhoto from './GetNovelPhoto';
+import { useParams } from 'react-router-dom';
 
-const Novelabout = ({ Ntitle }) => {
+const Novelabout = ({ userObj }) => {
+  const { title } = useParams();
   const [subtitles, setSubtitles] = useState([]);
+  const [isOwnNovel, setIsOwnNovel] = useState(false);
+  const [writerId, setWriterId] = useState();
 
   const getNovelAbout = async () => {
     const data = await axios.get(`http://localhost:8000/api/novelabout`, {
-      params: Ntitle,
+      params: title,
     });
-    setSubtitles(data.data);
-    //console.log(data.data[0].subtitle);
+    setSubtitles(data.data[0]);
+    setWriterId(data.data[1][0].id);
   };
 
   useEffect(() => {
@@ -18,12 +24,15 @@ const Novelabout = ({ Ntitle }) => {
   }, []);
 
   useEffect(() => {
-    //console.log(subtitles);
-  }, [subtitles]);
+    if (userObj.uid === writerId) {
+      setIsOwnNovel(true);
+    }
+  }, [writerId]);
 
   return (
     <div>
-      i'm Novelabout Page The novel is {Ntitle}
+      <GetNovelPhoto Ntitle={title} />
+      {isOwnNovel && <OwnNovelEdit title={title} />}
       <div>
         {subtitles &&
           subtitles.map((sub, idx) => (

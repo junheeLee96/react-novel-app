@@ -1,0 +1,17 @@
+.NovelAddComfirm {
+  text-align: center;
+}
+
+.submit-button {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  padding: 20px;
+  border: none;
+  background: indianred;
+  border-radius: 5px;
+  margin-top: 40px;
+  vertical-align: middle;
+  align-items: center;
+  justify-self: center;
+}

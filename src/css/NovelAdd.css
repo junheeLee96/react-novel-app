@@ -1,0 +1,27 @@
+.NovelAdd {
+  text-align: center;
+}
+
+.movie-container {
+  margin: 0 auto;
+  width: 80%;
+  border: 1px solid #333;
+  padding: 10px 0 30px 0;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+.form-wrapper {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.title-input {
+  width: 500px;
+  height: 40px;
+  margin: 10px;
+}
+
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+  min-height: 500px;
+}
