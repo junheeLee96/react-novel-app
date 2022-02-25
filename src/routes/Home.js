@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Novel from '../components/Novel';
 
-const Home = () => {
+const Home = ({ getFromhomeTitle }) => {
+  const titleGet = (t) => {
+    getFromhomeTitle(t);
+  };
+
   const [getnovel, setGetnovel] = useState([]);
   const [init, setInit] = useState(false);
 
@@ -16,10 +20,6 @@ const Home = () => {
     get();
   }, []);
 
-  useEffect(() => {
-    console.log(getnovel);
-  }, [getnovel]);
-
   return (
     <div>
       im Home
@@ -30,6 +30,7 @@ const Home = () => {
               title={novel.title}
               displayName={novel.displayName}
               image={novel.image}
+              titleGet={titleGet}
             />
           ))
         : ''}

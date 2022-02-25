@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const Createnovel = ({ userObj }) => {
+  const fileInput = useRef();
   const [createnovel, setCreatenovel] = useState({
     title: '',
     plot: '',
@@ -66,13 +67,6 @@ const Createnovel = ({ userObj }) => {
         });
     }
   };
-
-  useEffect(() => {
-    console.log(messagecondition);
-    console.log(createComplete);
-  }, [messagecondition, createComplete]);
-
-  const fileInput = useRef();
 
   const onClearAttachment = () => {
     setAttachment(null);

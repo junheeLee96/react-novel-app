@@ -6,8 +6,19 @@ import Auth from './Auth';
 import Createnovel from '../components/Createnovel';
 import axios from 'axios';
 import Editprofile from '../components/Editprofile';
+import Novelabout from 'components/Novelabout';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
+  const [Ntitle, getNtitle] = useState();
+
+  const getFromhomeTitle = (t) => {
+    getNtitle(t);
+  };
+
+  useEffect(() => {
+    //console.log(Ntitle);
+  }, [Ntitle]);
+
   useEffect(() => {
     if (isLoggedIn && userObj) {
       axios
@@ -28,7 +39,14 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
         {isLoggedIn ? (
           <>
             <>
-              <Route path="/" element={<Home />} />
+              <Route
+                path="/"
+                element={<Home getFromhomeTitle={getFromhomeTitle} />}
+              />
+              <Route
+                path="/novel/:title"
+                element={<Novelabout Ntitle={Ntitle} />}
+              />
               <Route
                 path="createnovel"
                 element={<Createnovel userObj={userObj} />}
