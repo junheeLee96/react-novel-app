@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import '../css/Createnovel.css';
+import '../../css/Createnovel.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 

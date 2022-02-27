@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const OwnNovelEdit = ({ title }) => {
+const OwnNovelAddBtn = ({ title }) => {
   return (
     <div>
       <Link to={`/addnovel/${title}`}>
@@ -11,4 +11,4 @@ const OwnNovelEdit = ({ title }) => {
   );
 };
 
-export default OwnNovelEdit;
+export default OwnNovelAddBtn;

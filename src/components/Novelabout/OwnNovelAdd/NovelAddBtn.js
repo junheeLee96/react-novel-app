@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import '../css/NovelAddComfirm.css';
+import '../../../css/NovelAddComfirm.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import NovelAddConfirm from './NovelAddConfirm';
+import NovelAddConfirmBox from './NovelAddConfirmBox';
 
 const NovelAddBtn = ({ subtitle, userObj }) => {
   const { title } = useParams();
 
-  const [upload, setUpload] = useState(false);
+  const [isUpload, setIsUpload] = useState(false);
 
   const onConfirmBtnClick = async () => {
     const data = await axios.post('http://localhost:8000/noveladd', {
@@ -16,15 +16,11 @@ const NovelAddBtn = ({ subtitle, userObj }) => {
       title: title,
       id: userObj.uid,
     });
-    setUpload(data.data);
+    setIsUpload(data.data);
   };
-
-  useEffect(() => {
-    console.log(upload);
-  }, [upload]);
   return (
     <div className="NovelAddComfirm">
-      {upload ? <NovelAddConfirm title={title} /> : ''}
+      {isUpload ? <NovelAddConfirmBox title={title} /> : ''}
       <button className="submit-button" onClick={onConfirmBtnClick}>
         입력
       </button>

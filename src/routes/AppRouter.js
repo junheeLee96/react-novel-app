@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Navigation from '../components/Navigation';
 import Auth from './Auth';
-import Createnovel from '../components/Createnovel';
+import Createnovel from '../components/createnovel/Createnovel';
 import axios from 'axios';
-import Editprofile from '../components/Editprofile';
-import Novelabout from 'components/Novelabout';
-import NovelAdd from 'components/NovelAdd';
+import Editprofile from '../components/EditUserInfo/Editprofile';
+import Novelabout from 'components/Novelabout/Novelabout';
+import NovelAdd from 'components/Novelabout/OwnNovelAdd/NovelAdd';
+import UpdateSub from 'components/Novelabout/NovelEdit/UpdateSub/UpdateSub';
+import NovelaboutShowContent from 'components/Novelabout/NovelaboutShowContent';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
   const [Ntitle, getNtitle] = useState();
+  const [isOwnNovelFromRouter, setisOwnNovelFromRouter] = useState(false);
 
   const getFromhomeTitle = (t) => {
     getNtitle(t);
@@ -48,17 +51,40 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
               />
               <Route
                 path="/novel/:title"
-                element={<Novelabout Ntitle={Ntitle} userObj={userObj} />}
+                element={
+                  <Novelabout
+                    Ntitle={Ntitle}
+                    userObj={userObj}
+                    setisOwnNovelFromRouter={setisOwnNovelFromRouter}
+                  />
+                }
+              />
+              <Route
+                path="/read/:title/:dateOfUpdate"
+                element={<NovelaboutShowContent />}
               />
               <Route
                 path="createnovel"
                 element={<Createnovel userObj={userObj} />}
               />
-              <Route path="editprofile" element={<Editprofile />} />
+              <Route
+                path="editprofile"
+                element={<Editprofile userObj={userObj} />}
+              />
               <Route
                 path="/addnovel/:title"
                 element={<NovelAdd userObj={userObj} />}
               />
+              {isOwnNovelFromRouter ? (
+                <>
+                  <Route
+                    path="/update/:title/:dateOfUpdate"
+                    element={<UpdateSub />}
+                  />
+                </>
+              ) : (
+                '잘못된 경로입니다.'
+              )}
             </>
           </>
         ) : (
