@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AppRouter from './routes/AppRouter';
 import { authService } from './fBase';
 import Header from './components/Header';
+import 'css/App.css';
 
 const App = () => {
   const [init, setInit] = useState(false);
@@ -27,7 +28,7 @@ const App = () => {
   return (
     <>
       {init ? (
-        <Header
+        <AppRouter
           isLoggedIn={isLoggedIn}
           userObj={userObj}
           //refreshUser={refreshUser}

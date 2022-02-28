@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 
 const Novel = ({ title, displayName, image, titleGet }) => {
   const img = process.env.PUBLIC_URL + `/img/${image}`;
+  const origin = process.env.PUBLIC_URL + `/img/originImg.jpg`;
+  const imgWidth = '100px';
+  const imgHeight = '100px';
 
   return (
     <Link
@@ -13,13 +16,18 @@ const Novel = ({ title, displayName, image, titleGet }) => {
     >
       <div>
         {image ? (
-          <img src={img} alt="" width="90px" height="90px" />
+          <img
+            src={img}
+            alt="Cover_imgage"
+            width={imgWidth}
+            height={imgHeight}
+          />
         ) : (
           <img
-            src={process.env.PUBLIC_URL + `/img/imgfile1645565657217.png`}
-            width="90px"
-            height="90px"
-            alt="image"
+            src={origin}
+            width={imgWidth}
+            height={imgHeight}
+            alt="Cover_image"
           />
         )}
         <h2>{title}</h2>

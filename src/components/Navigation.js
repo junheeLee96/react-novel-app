@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { authService } from '../fBase';
+import '../css/Navigation.css';
 
 const Navigation = ({ isLoggedIn, userObj }) => {
   const onSignOutClick = () => {
     authService.signOut();
   };
   return (
-    <>
+    <div className="Nagivation">
       <Link to="/">
         <button onClick={onSignOutClick}>Sign Out</button>
       </Link>
@@ -28,7 +29,7 @@ const Navigation = ({ isLoggedIn, userObj }) => {
           <Link to="editprofile">프로필 수정</Link>
         </li>
       </ul>
-    </>
+    </div>
   );
 };
 

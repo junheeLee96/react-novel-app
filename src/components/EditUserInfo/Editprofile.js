@@ -20,7 +20,7 @@ const Editprofile = ({ userObj }) => {
 
   return (
     <div>
-      <p>
+      <div>
         <ul>
           <li>UID: {uid}</li>
           <li>
@@ -34,7 +34,7 @@ const Editprofile = ({ userObj }) => {
             />
           </li>
         </ul>
-      </p>
+      </div>
       <EditUserInfoBtn uid={uid} displayName={displayName} />
     </div>
   );

@@ -8,7 +8,7 @@ const Header = ({ isLoggedIn, userObj }) => {
     authService.signOut();
   };
   return (
-    <div>
+    <div className="Header">
       {/*
 
         <Link to="/">

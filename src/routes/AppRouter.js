@@ -10,6 +10,7 @@ import Novelabout from 'components/Novelabout/Novelabout';
 import NovelAdd from 'components/Novelabout/OwnNovelAdd/NovelAdd';
 import UpdateSub from 'components/Novelabout/NovelEdit/UpdateSub/UpdateSub';
 import NovelaboutShowContent from 'components/Novelabout/NovelaboutShowContent';
+import '../css/routes/AppRouter.css';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
   const [Ntitle, getNtitle] = useState();
@@ -30,14 +31,12 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
           id: userObj.uid,
           displayName: userObj.displayName,
         })
-        .then(() => {
-          console.log('등록완료');
-        });
+        .then(() => {});
     }
   }, [userObj]);
 
   return (
-    <div>
+    <div className="AppRouter">
       {isLoggedIn && <Navigation isLoggedIn={isLoggedIn} userObj={userObj} />}
       <Routes>
         {isLoggedIn ? (

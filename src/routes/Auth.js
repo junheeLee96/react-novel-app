@@ -1,7 +1,12 @@
 import React from 'react';
 import { authService, firebaseInstance } from '../fBase';
+import '../css/routes/Auth.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle, faGithub } from '@fortawesome/free-brands-svg-icons';
+import video from '../css/video/backgroundvid.mp4';
 
 const Auth = () => {
+  const covervid = process.env.PUBLIC_URL + `/img/vidbackground.mp4`;
   const onSignInClick = async (e) => {
     const {
       target: { name },
@@ -12,24 +17,23 @@ const Auth = () => {
       await firebaseInstance
         .auth()
         .setPersistence(firebaseInstance.auth.Auth.Persistence.SESSION);
-    } else if (name === 'apple') {
-      provider = new firebaseInstance.auth.OAuthProvider('apple.com');
-    } else if (name === 'facebook') {
-      provider = new firebaseInstance.auth.FacebookAuthProvider();
     }
     await authService.signInWithPopup(provider);
   };
   return (
-    <div>
-      <button name="google" onClick={onSignInClick}>
-        Sign in with Goolge
-      </button>
-      <button name="apple" onClick={onSignInClick}>
-        Sign in with Apple
-      </button>
-      <button name="facebook" onClick={onSignInClick}>
-        Sign in with Facebook
-      </button>
+    <div className="Auth container">
+      <div className="vid-wrap">
+        <video autoPlay={true} muted={true} loop={true}>
+          <source src={video} type="video/mp4" />
+        </video>
+      </div>
+      <div className="overlay"></div>
+      <div className="loginBtn">
+        <button name="google" onClick={onSignInClick} className="loginGoo">
+          <FontAwesomeIcon icon={faGoogle} className="goo-icon" />
+          {''} Continue with Google
+        </button>
+      </div>
     </div>
   );
 };
