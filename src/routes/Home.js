@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Novel from '../components/Novel';
+import Loading from 'components/Loading';
+import '../css/routes/Home.css';
+import HomeSlider from './HomeSlider';
 
 const Home = ({ getFromhomeTitle, userObj }) => {
   const titleGet = (t) => {
@@ -21,19 +24,21 @@ const Home = ({ getFromhomeTitle, userObj }) => {
   }, []);
 
   return (
-    <div>
-      im Home
-      {init
-        ? getnovel.map((novel, idx) => (
-            <Novel
-              key={idx}
-              title={novel.title}
-              displayName={novel.displayName}
-              image={novel.image}
-              titleGet={titleGet}
-            />
-          ))
-        : 'Loading...'}
+    <div className="Home">
+      <HomeSlider />
+      <div className="home-wrap">
+        {init
+          ? getnovel.map((novel, idx) => (
+              <Novel
+                key={idx}
+                title={novel.title}
+                displayName={novel.displayName}
+                image={novel.image}
+                titleGet={titleGet}
+              />
+            ))
+          : 'Loading..'}
+      </div>
     </div>
   );
 };

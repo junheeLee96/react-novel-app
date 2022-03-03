@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Home';
-import Navigation from '../components/Navigation';
+import Navigation from '../components/Navigation/Navigation';
 import Auth from './Auth';
 import Createnovel from '../components/createnovel/Createnovel';
 import axios from 'axios';
@@ -37,7 +37,11 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
 
   return (
     <div className="AppRouter">
-      {isLoggedIn && <Navigation isLoggedIn={isLoggedIn} userObj={userObj} />}
+      {isLoggedIn && (
+        <>
+          <Navigation isLoggedIn={isLoggedIn} userObj={userObj} />
+        </>
+      )}
       <Routes>
         {isLoggedIn ? (
           <>

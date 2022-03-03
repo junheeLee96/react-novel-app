@@ -2,7 +2,7 @@ import React from 'react';
 import { authService, firebaseInstance } from '../fBase';
 import '../css/routes/Auth.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import video from '../css/video/backgroundvid.mp4';
 
 const Auth = () => {

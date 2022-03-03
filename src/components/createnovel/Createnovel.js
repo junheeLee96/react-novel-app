@@ -143,8 +143,7 @@ const Createnovel = ({ userObj }) => {
         />
         <CKEditor
           editor={ClassicEditor}
-          data="<p></p>"
-          placeholder="줄거리를 입력하세요."
+          data="<p>줄거리를 입력하세요.</p>"
           onChange={(event, editor) => {
             const data = editor.getData();
             setCreatenovel({
@@ -154,23 +153,6 @@ const Createnovel = ({ userObj }) => {
           }}
         />
       </div>
-      {/*
-        <form method="post" encType="multipart/form-data">
-        <div className="button"></div>
-        <input
-          type="file"
-          accept="image/*"
-          ref={fileInput}
-          onChange={onFileChange}
-        />
-        {attachment && (
-          <div>
-            <img src={attachment} width="50px" height="50px" />
-            <button onClick={onClearAttachment}>Clear</button>
-          </div>
-        )}
-        </form>
-        */}
 
       <>
         <div>

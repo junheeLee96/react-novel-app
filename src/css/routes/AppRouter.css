@@ -1,8 +1,10 @@
 .AppRouter {
   margin: 0;
   padding: 0;
-  background-color: antiquewhite;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

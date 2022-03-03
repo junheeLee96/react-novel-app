@@ -2,3 +2,19 @@
   margin: 0;
   padding: 0;
 }
+
+.Loading {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.LoadingMessage {
+  font-size: 3px;
+  z-index: 12;
+}
