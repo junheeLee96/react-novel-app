@@ -6,7 +6,7 @@ const HomeAndCreate = () => {
     <div className="HomeAndCreate">
       <Link to="/">Home</Link>
 
-      <Link to="createnovel">About</Link>
+      <Link to="createnovel">소설 등록</Link>
     </div>
   );
 };

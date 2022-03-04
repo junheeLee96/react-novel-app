@@ -12,42 +12,22 @@ const Navigation = ({ isLoggedIn, userObj }) => {
   const onSignOutClick = () => {
     authService.signOut();
   };
-  /*
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-
-  const handleResize = debounce(() => {
-    setWindowSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-    console.log(windowSize);
-  }, 1000);
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);*/
 
   return (
     <div className="Navigation">
       <div className="nav-inside">
-        <ul>
+        <ul className="Nav_ul">
           <li>
             <Symbol />
           </li>
         </ul>
 
-        <ul>
+        <ul className="Nav_ul">
           <li>
             <HomeAndCreate />
           </li>
         </ul>
-        <ul>
+        <ul className="Nav_ul">
           <li>
             <Link to="editprofile">
               <FontAwesomeIcon icon={faUser} className="nav_user" />{' '}

@@ -12,8 +12,9 @@
 .nav-inside {
   display: flex;
   margin: 0 !important;
+  padding: 10px;
   justify-content: space-between;
-  width: 1108.3px;
+  width: 81.3vw;
 }
 .HomeAndCreate {
   display: flex;
@@ -24,6 +25,9 @@
 
 ul {
   list-style: none;
+}
+
+.Nav_ul {
   padding-left: 0px;
   position: relative;
   padding-top: 1rem;
@@ -39,8 +43,12 @@ a:visited {
   color: black;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1150px) {
   .Navigation {
+    width: 100vw;
+  }
+
+  .nav-inside {
     width: 100vw;
   }
 

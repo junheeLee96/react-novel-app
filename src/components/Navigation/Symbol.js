@@ -7,7 +7,7 @@ const Symbol = () => {
   return (
     <div className="Symbol">
       <FontAwesomeIcon icon={faBook} className="sym_book" />
-      베스트셀러{''}
+      Novelia{''}
     </div>
   );
 };

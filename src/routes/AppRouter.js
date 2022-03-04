@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './Home';
+import Home from './Home/Home';
 import Navigation from '../components/Navigation/Navigation';
 import Auth from './Auth';
 import Createnovel from '../components/createnovel/Createnovel';

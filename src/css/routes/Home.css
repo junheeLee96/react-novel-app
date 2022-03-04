@@ -14,33 +14,63 @@
 }
 .HomeSlider {
   background-image: url('../video/slider2.jpg');
+  overflow: hidden;
   width: 100vw;
   height: 40vh;
+  display: flex;
+  justify-content: center;
+}
+.HomeSlider_ShowBox {
+  position: absolute;
+  width: 81.3vw;
+  height: 40vh;
+  overflow: hidden;
 }
 
-.HomeSlider_ins {
-  z-index: 99;
+.HomeSlider_inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.HomeSlider_inner .item {
+  min-width: 100%;
+  min-height: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  height: 200px;
+  color: #fff;
+  padding: 0;
+}
+
+.NTitle {
+  margin: 10px 0 20px 0;
+}
+
+.NPlot {
+  margin: 10px 0 0 0;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+
+.indicators > button {
+  margin: 5px;
 }
 
 .home-wrap {
   margin: 0;
-  width: 1108.3px;
-
-  /*display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;*/
-
+  width: 80.5vw;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
 }
 
-.home-wrap > * {
-  flex: 1 1;
-}
-
 .Home a {
-  display: flex;
-  padding: 5.77px;
 }
 
 .Home a h4 {
@@ -52,13 +82,24 @@
     width: 100vw;
   }
 
-  .Home a {
-    flex-shrink: 0;
-  }
   .home-wrap {
     width: 100vw;
   }
   .home-wrap a .Novel img {
     padding: 0 !important;
+  }
+
+  .HomeSlider {
+    height: 30vh;
+  }
+
+  .HomeSlider_ShowBox {
+    width: 100vw;
+    height: 30vh;
+    padding-left: 10px;
+  }
+
+  .HomeSlider_ShowBox .HomeSlider_inner .item img {
+    width: 30vw;
   }
 }

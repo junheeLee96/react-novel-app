@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Novel from '../components/Novel';
+import Novel from './Novel';
 import Loading from 'components/Loading';
-import '../css/routes/Home.css';
+import '../../css/routes/Home.css';
 import HomeSlider from './HomeSlider';
 
 const Home = ({ getFromhomeTitle, userObj }) => {
