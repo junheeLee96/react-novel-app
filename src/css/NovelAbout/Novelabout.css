@@ -1,0 +1,77 @@
+.Novelabout {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Novelabout_wrap {
+  width: 1200px;
+}
+
+.Novelabout_head {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.Novelabout_scrip {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.Novelabout_tda {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+.Novelabout_img img {
+  width: 300px;
+  height: 340px;
+}
+
+.Novelabout_font {
+  margin-left: 15px;
+}
+
+.NovelaboutShowtitle {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.NovelaboutShowName {
+  font-size: 18px;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.Novelabout_SubTitle {
+  margin-top: 50px;
+}
+
+.NovelaboutSubtitle_link {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.NovelaboutSubtitle_link .span_idx {
+  margin: 0 50px 0 10px;
+  font-size: 13px;
+}
+
+.NovelaboutSubtitle_link .span_subtitle {
+  font-size: 20px;
+}
+
+.Novelabout_plot {
+  margin-top: 10px;
+}
+
+.faPencil {
+  color: rgb(97, 14, 117);
+}
+
+.EditSubBtn {
+  font-size: 20px;
+}

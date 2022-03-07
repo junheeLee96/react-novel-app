@@ -1,0 +1,137 @@
+.Createnovel {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: center;
+}
+
+.Create_wrap {
+  width: 100%;
+}
+
+.form-wrapper {
+  padding: 0;
+  margin: 0 0 0 0;
+  width: 1200px !important;
+}
+
+.title-input {
+  height: 40px;
+  margin: 0 !important;
+  margin-bottom: 10px !important;
+  width: 100% !important;
+}
+
+.submit-button {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  padding: 20px;
+  border: none;
+  background: indianred;
+  border-radius: 5px;
+  margin-top: 40px;
+  vertical-align: middle;
+}
+
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+  min-height: 500px;
+}
+
+.ck.ck-deitor {
+  width: 100%;
+}
+
+.message_wrap {
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message_box {
+  border: 1px solid black;
+  z-index: 101;
+}
+
+.message_comfirm_box {
+  cursor: pointer;
+  z-index: 101;
+}
+
+@media (max-width: 1400px) {
+  .Create_wrap {
+    width: 100vw !important;
+  }
+
+  .form-wrapper {
+    width: 98vw !important;
+  }
+
+  .title-input {
+    width: 100%;
+  }
+
+  .ck.ck-deitor {
+    width: 100% !important;
+  }
+}
+
+/*
+.Createnovel {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: center;
+}
+
+.Create_wrap {
+  width: 1200px;
+}
+
+.form-wrapper {
+  margin: 0 !important;
+  padding: 0;
+  width: 100%;
+}
+
+.title-input {
+  height: 40px;
+  margin: 0 !important;
+  margin-bottom: 10px !important;
+  width: 1200px !important;
+}
+
+.submit-button {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  padding: 20px;
+  border: none;
+  background: indianred;
+  border-radius: 5px;
+  margin-top: 40px;
+  vertical-align: middle;
+}
+/*
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+  min-height: 500px;
+}
+
+.ck.ck-editor {
+  width: 100% !important;
+}
+*/

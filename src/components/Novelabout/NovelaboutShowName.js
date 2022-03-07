@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NovelaboutShowName = ({ displayName }) => {
-  return <div>{displayName}</div>;
+  return <h5 className="NovelaboutShowName">{displayName}</h5>;
 };
 
 export default NovelaboutShowName;

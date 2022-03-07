@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Parser from 'html-react-parser';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 const HomeSlider = () => {
   const origin = process.env.PUBLIC_URL + `/img/originImg.jpg`;
-
+  const navigate = useNavigate();
   const [recentnovel, setRecentNovel] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -13,6 +16,8 @@ const HomeSlider = () => {
     const data = await axios.get('http://localhost:8000/api/recentlynovels');
     setRecentNovel(data.data);
   };
+
+  console.log('HomeSlider was Render');
 
   useEffect(() => {
     getRecentlyNovels();
@@ -27,7 +32,7 @@ const HomeSlider = () => {
     }
     setActiveIndex(newIndex);
   };
-  /*
+  /* 슬라이더 인터벌
   useEffect(() => {
     const setInterTime = setInterval(() => {
       updateIndex(activeIndex + 1);
@@ -37,7 +42,17 @@ const HomeSlider = () => {
         clearInterval(setInterTime);
       }
     };
-  });*/
+  });
+  */
+
+  /*
+  <div className="item" onClick={onBtnClick(novel.title)}></div>
+
+  */
+
+  const onBtnClick = (title) => {
+    navigate(`/novel/${title}`);
+  };
 
   return (
     <div className="HomeSlider">
@@ -47,7 +62,7 @@ const HomeSlider = () => {
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
           {recentnovel.map((novel, idx) => (
-            <Link to={`/novel/${novel.title}`} className="item">
+            <div onClick={onBtnClick} className="item" key={idx}>
               <div className="item_TP">
                 <div className="NTitle">{novel.title}</div>
                 <div className="NPlot">{Parser(`${novel.plot}`)}</div>
@@ -62,26 +77,46 @@ const HomeSlider = () => {
                 width="350px"
                 height="100%"
               />
-            </Link>
+            </div>
           ))}
         </div>
-      </div>
-      <div className="indicators">
-        <button
+        <FontAwesomeIcon
+          icon={faArrowAltCircleLeft}
+          className="SlideBtn leftBtn"
           onClick={() => {
             updateIndex(activeIndex - 1);
           }}
-        >
-          Prev
-        </button>
-        <button
+        />
+        <FontAwesomeIcon
+          icon={faArrowAltCircleRight}
+          className="SlideBtn rightBtn"
           onClick={() => {
             updateIndex(activeIndex + 1);
           }}
-        >
-          Next
-        </button>
+        />
       </div>
+      {/** 
+       
+      
+      <div className="indicators">
+        <div className="Btn_wrap">
+          <FontAwesomeIcon
+            icon={faArrowAltCircleLeft}
+            className="Btn_left"
+            onClick={() => {
+              updateIndex(activeIndex - 1);
+            }}
+          />
+          <FontAwesomeIcon
+            icon={faArrowAltCircleRight}
+            className="Btn_right"
+            onClick={() => {
+              updateIndex(activeIndex + 1);
+            }}
+          />
+        </div>
+      </div>
+      */}
     </div>
   );
 };

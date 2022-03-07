@@ -21,10 +21,6 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
   };
 
   useEffect(() => {
-    //console.log(Ntitle);
-  }, [Ntitle]);
-
-  useEffect(() => {
     if (isLoggedIn && userObj) {
       axios
         .post('http://localhost:8000/api/insert', {

@@ -2,43 +2,51 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Novel from './Novel';
 import Loading from 'components/Loading';
-import '../../css/routes/Home.css';
+import '../../css/routes/Home/Home.css';
 import HomeSlider from './HomeSlider';
+import Pagenation from './Pagenation';
 
 const Home = ({ getFromhomeTitle, userObj }) => {
+  const [getnovel, setGetnovel] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(10);
+  const [init, setInit] = useState(false);
+
+  const Lastindex = currentPage * postPerPage;
+  const Firstindex = Lastindex - postPerPage;
+
   const titleGet = (t) => {
     getFromhomeTitle(t);
   };
 
-  const [getnovel, setGetnovel] = useState([]);
-  const [init, setInit] = useState(false);
-
-  const get = async () => {
+  const getNovels = async () => {
     const data = await axios.get('http://localhost:8000/api/getnovels');
     setGetnovel(data.data);
     setInit(true);
   };
 
   useEffect(() => {
-    get();
+    getNovels();
   }, []);
+
+  const currentPosts = (nos) => {
+    let Cpost = 0;
+    Cpost = nos.slice(Firstindex, Lastindex);
+    return Cpost;
+  };
 
   return (
     <div className="Home">
       <HomeSlider />
       <div className="home-wrap">
-        {init
-          ? getnovel.map((novel, idx) => (
-              <Novel
-                key={idx}
-                title={novel.title}
-                displayName={novel.displayName}
-                image={novel.image}
-                titleGet={titleGet}
-              />
-            ))
-          : 'Loading..'}
+        <Novel Cpost={currentPosts(getnovel)} titleGet={titleGet} />
       </div>
+      <Pagenation
+        getnovelLen={getnovel.length}
+        postPerPage={postPerPage}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 };

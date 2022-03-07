@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../css/NovelaboutSubtitle.css';
+import '../../css/NovelAbout/NovelaboutSubtitle.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import EditSubBtn from './NovelEdit/EditSubBtn';
@@ -12,24 +12,24 @@ const NovelaboutSubtitle = ({
   title,
 }) => {
   return (
-    <div>
+    <>
       <Link
         to={`/read/${title}/${dateOfUpdate}`}
-        className="NovelaboutSubtitle"
+        className="NovelaboutSubtitle_link"
       >
-        <div>
-          <span className="span_idx">{idx + 1}화</span>
-          <span>{subtitle}</span>
+        <div className="NovelaboutSubtitle_subtitle">
+          <span className="span_idx">{idx + 1}</span>
+          <span className="span_subtitle">{subtitle}</span>
         </div>
         {isOwnNovel ? (
-          <div>
+          <div className="EditSubBtn">
             <EditSubBtn dateOfUpdate={dateOfUpdate} title={title} />
           </div>
         ) : (
           ''
         )}
       </Link>
-    </div>
+    </>
   );
 };
 

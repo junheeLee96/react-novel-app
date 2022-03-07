@@ -11,3 +11,9 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+@media (max-width: 1400px) {
+  .AppRouter {
+    margin: 5px;
+  }
+}

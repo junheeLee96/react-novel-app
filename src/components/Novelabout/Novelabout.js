@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import NovelaboutShowtitle from './NovelaboutShowtitle';
 import NovelaboutShowPlot from './NovelaboutShowPlot';
 import NovelaboutShowName from './NovelaboutShowName';
+import '../../css/NovelAbout/Novelabout.css';
 
 const Novelabout = ({ userObj, setisOwnNovelFromRouter }) => {
   const { title } = useParams();
@@ -41,28 +42,43 @@ const Novelabout = ({ userObj, setisOwnNovelFromRouter }) => {
   }, [writerId]);
 
   return (
-    <div>
-      <NovelaboutShowtitle title={title} />
-      <NovelaboutShowPhoto novelImg={novelImg} />
-      <NovelaboutShowName displayName={displayName} />
-      <NovelaboutShowPlot plot={plot} />
-      {isOwnNovel && (
-        <>
-          <OwnNovelAddBtn title={title} />{' '}
-        </>
-      )}
-      <div>
-        {subtitles &&
-          subtitles.map((sub, idx) => (
-            <NovelaboutSubtitle
-              key={idx}
-              idx={idx}
-              subtitle={sub.subtitle}
-              dateOfUpdate={sub.dateOfUpdate}
-              isOwnNovel={isOwnNovel}
-              title={title}
-            />
-          ))}
+    <div className="Novelabout">
+      <div className="Novelabout_wrap">
+        <div className="Novelaboout_showbox">
+          <div className="Novelabout_head">
+            <div className="Novelabout_img">
+              <NovelaboutShowPhoto novelImg={novelImg} />
+            </div>
+            <div className="Novelabout_scrip">
+              <div className="Novelabout_tda">
+                <div>
+                  <NovelaboutShowtitle title={title} />
+                  <NovelaboutShowName displayName={displayName} />
+                </div>
+                {isOwnNovel && (
+                  <>
+                    <OwnNovelAddBtn title={title} />
+                  </>
+                )}
+              </div>
+
+              <NovelaboutShowPlot plot={plot} />
+            </div>
+          </div>
+          <div className="Novelabout_SubTitle">
+            {subtitles &&
+              subtitles.map((sub, idx) => (
+                <NovelaboutSubtitle
+                  key={idx}
+                  idx={idx}
+                  subtitle={sub.subtitle}
+                  dateOfUpdate={sub.dateOfUpdate}
+                  isOwnNovel={isOwnNovel}
+                  title={title}
+                />
+              ))}
+          </div>
+        </div>
       </div>
     </div>
   );

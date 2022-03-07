@@ -2,7 +2,7 @@
   width: 100%;
   height: 80px;
   font-size: 30px;
-  margin: 1vw;
+  margin: 1vh 0 1vw 0vw;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.23);
   display: flex;
   justify-content: center;
@@ -12,15 +12,15 @@
 .nav-inside {
   display: flex;
   margin: 0 !important;
-  padding: 10px;
   justify-content: space-between;
-  width: 81.3vw;
+  width: 1200px;
 }
 .HomeAndCreate {
   display: flex;
   flex-direction: row;
   width: 15vw;
   justify-content: space-between;
+  font-size: 20px;
 }
 
 ul {
@@ -43,13 +43,14 @@ a:visited {
   color: black;
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1400px) {
   .Navigation {
     width: 100vw;
   }
 
   .nav-inside {
-    width: 100vw;
+    width: 98vw;
+    padding: 0;
   }
 
   .HomeAndCreate {

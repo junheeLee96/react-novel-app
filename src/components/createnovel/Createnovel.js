@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import '../../css/Createnovel.css';
+import '../../css/CreateNovel/Createnovel.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const Createnovel = ({ userObj }) => {
+  const inputRef = useRef();
   const fileInput = useRef();
   const [createnovel, setCreatenovel] = useState({
     title: '',
@@ -107,72 +110,84 @@ const Createnovel = ({ userObj }) => {
 
   return (
     <div className="Createnovel">
-      <div>
-        <div>
+      <div className="Create_wrap">
+        {messagecondition ? (
           <div>
-            {messagecondition ? (
-              <div>
-                이미 존재하는 소설입니다
-                <button onClick={onMessageConfirm}>확인</button>
-              </div>
-            ) : (
-              ''
-            )}
-          </div>
-          <div>
-            {createComplete ? (
-              ''
-            ) : (
-              <div>
-                소설이 등록되었습니다.
-                <Link to="/">
-                  <button onClick={onCreatenovelCompleteBtn}>확인</button>
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="form-wrapper">
-        <input
-          className="title-input"
-          type="text"
-          placeholder="제목"
-          onChange={getValue}
-          name="title"
-        />
-        <CKEditor
-          editor={ClassicEditor}
-          data="<p>줄거리를 입력하세요.</p>"
-          onChange={(event, editor) => {
-            const data = editor.getData();
-            setCreatenovel({
-              ...createnovel,
-              plot: data,
-            });
-          }}
-        />
-      </div>
-
-      <>
-        <div>
-          {attachment ? (
             <div>
-              <img src={attachment} width="100px" height="100px" alt="" />
-              <button onClick={onClearAttachment}>Clear</button>
+              이미 존재하는 소설입니다
+              <div className="message_comfirm_box" onClick={onMessageConfirm}>
+                확인
+              </div>
             </div>
-          ) : (
-            'No Image here'
-          )}
+          </div>
+        ) : (
+          ''
+        )}
+      </div>
+      <div>
+        {createComplete ? (
+          ''
+        ) : (
+          <div>
+            <div>
+              소설이 등록되었습니다.
+              <Link to="/">
+                <div
+                  className="message_comfirm_box"
+                  onClick={onCreatenovelCompleteBtn}
+                >
+                  확인
+                </div>
+              </Link>
+            </div>
+          </div>
+        )}
+        <div className="form-wrapper">
+          <input
+            className="title-input"
+            type="text"
+            ref={inputRef}
+            placeholder="제목"
+            onChange={getValue}
+            name="title"
+          />
+          <CKEditor
+            editor={ClassicEditor}
+            data="<p>줄거리를 입력하세요.</p>"
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              setCreatenovel({
+                ...createnovel,
+                plot: data,
+              });
+            }}
+          />
         </div>
-        <form onSubmit={onSubmitF}>
-          <input type="file" onChange={onChangeI} ref={fileInput} />
-        </form>
-      </>
 
-      <button className="submit-button" onClick={onCreatenovelBtnClick}>
-        입력
-      </button>
+        <>
+          <div>
+            {attachment ? (
+              <div>
+                <img src={attachment} width="100px" height="100px" alt="" />{' '}
+                <FontAwesomeIcon
+                  icon={faXmark}
+                  className="nav_user"
+                  onClick={onClearAttachment}
+                />
+              </div>
+            ) : (
+              '선택된 커버 이미지가 없습니다.'
+            )}
+          </div>
+          <form onSubmit={onSubmitF}>
+            <input type="file" onChange={onChangeI} ref={fileInput} />
+          </form>
+        </>
+
+        <button className="submit-button" onClick={onCreatenovelBtnClick}>
+          입력
+        </button>
+      </div>
     </div>
   );
 };

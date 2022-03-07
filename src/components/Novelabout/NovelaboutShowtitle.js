@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NovelaboutShowtitle = ({ title }) => {
-  return <div>{title}</div>;
+  return <h3 className="NovelaboutShowtitle">{title}</h3>;
 };
 
 export default NovelaboutShowtitle;
