@@ -17,8 +17,6 @@ const HomeSlider = () => {
     setRecentNovel(data.data);
   };
 
-  console.log('HomeSlider was Render');
-
   useEffect(() => {
     getRecentlyNovels();
   }, []);
@@ -45,15 +43,6 @@ const HomeSlider = () => {
   });
   */
 
-  /*
-  <div className="item" onClick={onBtnClick(novel.title)}></div>
-
-  */
-
-  const onBtnClick = (title) => {
-    navigate(`/novel/${title}`);
-  };
-
   return (
     <div className="HomeSlider">
       <div className="HomeSlider_ShowBox">
@@ -62,7 +51,13 @@ const HomeSlider = () => {
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
           {recentnovel.map((novel, idx) => (
-            <div onClick={onBtnClick} className="item" key={idx}>
+            <div
+              onClick={() => {
+                navigate(`/novel/${novel.title}`);
+              }}
+              className="item"
+              key={idx}
+            >
               <div className="item_TP">
                 <div className="NTitle">{novel.title}</div>
                 <div className="NPlot">{Parser(`${novel.plot}`)}</div>

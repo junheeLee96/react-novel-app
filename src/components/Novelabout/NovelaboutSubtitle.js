@@ -13,22 +13,22 @@ const NovelaboutSubtitle = ({
 }) => {
   return (
     <>
-      <Link
-        to={`/read/${title}/${dateOfUpdate}`}
-        className="NovelaboutSubtitle_link"
-      >
-        <div className="NovelaboutSubtitle_subtitle">
+      <div className="NovelaboutSubtitle_subtitle">
+        <Link
+          to={`/read/${title}/${dateOfUpdate}`}
+          className="NovelaboutSubtitle_link"
+        >
           <span className="span_idx">{idx + 1}</span>
           <span className="span_subtitle">{subtitle}</span>
-        </div>
+        </Link>
         {isOwnNovel ? (
-          <div className="EditSubBtn">
+          <>
             <EditSubBtn dateOfUpdate={dateOfUpdate} title={title} />
-          </div>
+          </>
         ) : (
           ''
         )}
-      </Link>
+      </div>
     </>
   );
 };

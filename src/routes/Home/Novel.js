@@ -1,38 +1,35 @@
 import React, { useState } from 'react';
 import '../../css/routes/Home/Novel.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Novel = ({ Cpost, titleGet }) => {
+  const navigate = useNavigate();
   const ImgSrc = process.env.PUBLIC_URL + `/img/`;
-  const imgWidth = '240px';
-  const imgHeight = '260px';
+  const OriginImage = process.env.PUBLIC_URL + '/img/originImg.jpg';
 
   return (
     <>
       {Cpost.map((novel, idx) => (
-        <Link
+        <div
           key={idx}
-          to={`/novel/${novel.title}`}
           className="novel"
-          onClick={() => titleGet(novel.title)}
+          onClick={() => {
+            titleGet(novel.title);
+            navigate(`/novel/${novel.title}`);
+          }}
         >
-          <div className="Novel">
-            <img
-              src={
-                novel.image ? ImgSrc + novel.image : ImgSrc + 'originImg.jpg'
-              }
-              alt="Cover_imgage"
-              width={imgWidth}
-              height={imgHeight}
-            />
-            <h2>
-              {novel.title.length > 7
-                ? novel.title.substr(0, 7) + '..'
-                : novel.title}
-            </h2>
-            <h4>{novel.displayName}</h4>
-          </div>
-        </Link>
+          <img
+            src={novel.image ? ImgSrc + novel.image : OriginImage}
+            alt="Cover_imgage"
+            className="home_n_cover"
+          />
+          <h2 className="novel_title">
+            {novel.title.length > 7
+              ? novel.title.substr(0, 7) + '..'
+              : novel.title}
+          </h2>
+          <h4>{novel.displayName}</h4>
+        </div>
       ))}
     </>
   );

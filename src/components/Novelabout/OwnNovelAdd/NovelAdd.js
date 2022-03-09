@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../../../css/NovelAdd.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import NovelAddBtn from './NovelAddBtn';
-import { useRef } from 'react/cjs/react.production.min';
 
 const NovelAdd = ({ userObj }) => {
   const inputRef = useRef();
-  inputRef.current.focus();
 
   const [subtitle, setSubtitle] = useState({
     title: '',
@@ -22,6 +20,10 @@ const NovelAdd = ({ userObj }) => {
       title: value,
     });
   };
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   return (
     <div>

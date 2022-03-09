@@ -61,7 +61,6 @@ const Novelabout = ({ userObj, setisOwnNovelFromRouter }) => {
                   </>
                 )}
               </div>
-
               <NovelaboutShowPlot plot={plot} />
             </div>
           </div>

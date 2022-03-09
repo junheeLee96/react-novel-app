@@ -44,15 +44,21 @@
   margin-bottom: 10px;
 }
 
+.NovelaboutSubtitle_subtitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 3 1;
+  margin-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+
 .Novelabout_SubTitle {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .NovelaboutSubtitle_link {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid black;
-  margin-bottom: 10px;
+  width: 98%;
 }
 
 .NovelaboutSubtitle_link .span_idx {
@@ -74,4 +80,5 @@
 
 .EditSubBtn {
   font-size: 20px;
+  cursor: pointer;
 }

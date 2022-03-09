@@ -1,0 +1,35 @@
+.NovelaboutShowContent {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.ShowContent {
+  width: 730px;
+  background-color: rgb(247, 247, 247);
+}
+
+.Content_nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  justify-content: space-between;
+  font-size: 40px;
+  border-top: 0.5px solid black;
+}
+
+.NextBtn {
+  margin-right: 50px;
+}
+.PrevBtn {
+  margin-left: 50px;
+}
+.nav_Home {
+  color: rgb(96, 105, 235);
+}
+.Content_nav_item {
+  cursor: pointer;
+}
