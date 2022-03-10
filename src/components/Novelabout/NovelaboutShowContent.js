@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import '../../css/NovelAbout/NovelaboutShowContent.css';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -12,16 +12,18 @@ const NovelaboutShowContent = () => {
 
   const [content, setContent] = useState('');
   const [isClick, setIsClick] = useState(false);
-  const [idx, setIdx] = useState(0);
+  // const [CurrentIdx, setCurrentIdx] = useState(0);
 
   const getContent = async () => {
     const data = await axios.get(`http://localhost:8000/api/novelshowcontent`, {
       params: TitleAndDate,
     });
-    const NovelData = data.data[0];
-    setIdx(NovelData.idx);
-    setContent(NovelData.content);
+    const ConData = data.data[0];
+    // setCurrentIdx(ConData.idx);
+    setContent(ConData.content);
   };
+
+  console.log('showcontent is render!');
 
   useEffect(() => {
     getContent();
@@ -45,13 +47,26 @@ const NovelaboutShowContent = () => {
           'Loading...'
         )}
       </div>
-      {isClick ? (
+      {isClick && (
         <div className="Content_nav" style={{ height: '5vh' }}>
-          <ContentNav title={title} idx={idx} />
+          <ContentNav
+            title={title}
+            // CurrentIdx={CurrentIdx}
+            dateOfUpdate={dateOfUpdate}
+          />
+        </div>
+      )}
+      {/*isClick ? (
+        <div className="Content_nav" style={{ height: '5vh' }}>
+          <ContentNav
+            title={title}
+            CurrentIdx={CurrentIdx}
+            dateOfUpdate={dateOfUpdate}
+          />
         </div>
       ) : (
         ''
-      )}
+      )*/}
     </>
   );
 };

@@ -4,34 +4,36 @@ import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const ContentNav_Prev = ({ title, idx }) => {
-  const [PrevContent, setPrevContent] = useState('');
-  const [dateOfUpdate, setPrevRecentDate] = useState('');
+const ContentNav_Prev = ({ title, CurrentIdx, dateOfUpdate }) => {
+  const [PrevRecentDate, setPrevRecentDate] = useState(0);
+
   const navigate = useNavigate();
 
-  //navigate(`/novel/${title}`);
   const onPrevBtnClick = async () => {
     const data = await axios.post('http://localhost:8000/prev', {
       title: title,
-      idx: idx,
+      idx: CurrentIdx,
     });
     const dataOfdata = data.data[0];
     setPrevRecentDate(dataOfdata.dateOfUpdate);
-    navigate(`/read/${title}/${dateOfUpdate}`);
   };
 
   useEffect(() => {
-    console.log(dateOfUpdate);
-  }, [PrevContent, dateOfUpdate]);
-
-  useEffect(() => {
-    return setPrevContent();
-  }, []);
+    navigate(`/read/${title}/${PrevRecentDate}`);
+  }, [PrevRecentDate]);
 
   return (
-    <div className="PrevBtn Content_nav_item" onClick={onPrevBtnClick}>
-      <FontAwesomeIcon icon={faArrowCircleLeft} className="nav_user" />
-    </div>
+    <>
+      <div
+        className="PrevBtn Content_nav_item"
+        onClick={onPrevBtnClick}
+        style={
+          CurrentIdx !== 1 ? { opacity: '1' } : { opacity: '0', cursor: 'none' }
+        }
+      >
+        <FontAwesomeIcon icon={faArrowCircleLeft} className="nav_user" />
+      </div>
+    </>
   );
 };
 
