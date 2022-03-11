@@ -6,7 +6,7 @@ import ContentNav_Home from './ContentNav_Home';
 import ContentNav_Next from './ContentNav_Next';
 import { useNavigate } from 'react-router-dom';
 
-const ContentNav = ({ title, CurrentIdx, dateOfUpdate }) => {
+const ContentNav = ({ title, CurrentIdx, dateOfUpdate, LastIdx }) => {
   const navigate = useNavigate();
   //<FontAwesomeIcon icon={faUser} className="nav_user" />
   return (
@@ -27,7 +27,12 @@ const ContentNav = ({ title, CurrentIdx, dateOfUpdate }) => {
         <ContentNav_Home />
       </div>
       <>
-        <ContentNav_Next title={title} CurrentIdx={CurrentIdx} />
+        <ContentNav_Next
+          title={title}
+          CurrentIdx={CurrentIdx}
+          LastIdx={LastIdx}
+          dateOfUpdate={dateOfUpdate}
+        />
       </>
     </>
   );

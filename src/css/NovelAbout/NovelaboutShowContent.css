@@ -7,6 +7,13 @@
 .ShowContent {
   width: 730px;
   background-color: rgb(247, 247, 247);
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .Content_nav {
@@ -32,4 +39,12 @@
 }
 .Content_nav_item {
   cursor: pointer;
+}
+
+.no-drag {
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
 }

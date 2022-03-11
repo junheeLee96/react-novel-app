@@ -5,14 +5,13 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const ContentNav_Prev = ({ title, CurrentIdx, dateOfUpdate }) => {
-  const [PrevRecentDate, setPrevRecentDate] = useState(0);
-
+  const [PrevRecentDate, setPrevRecentDate] = useState(dateOfUpdate);
+  const SendData = [title, CurrentIdx];
   const navigate = useNavigate();
 
   const onPrevBtnClick = async () => {
     const data = await axios.post('http://localhost:8000/prev', {
-      title: title,
-      idx: CurrentIdx,
+      SendData: SendData,
     });
     const dataOfdata = data.data[0];
     setPrevRecentDate(dataOfdata.dateOfUpdate);
@@ -28,7 +27,9 @@ const ContentNav_Prev = ({ title, CurrentIdx, dateOfUpdate }) => {
         className="PrevBtn Content_nav_item"
         onClick={onPrevBtnClick}
         style={
-          CurrentIdx !== 1 ? { opacity: '1' } : { opacity: '0', cursor: 'none' }
+          CurrentIdx !== 1
+            ? { opacity: '1' }
+            : { opacity: '0', cursor: 'default' }
         }
       >
         <FontAwesomeIcon icon={faArrowCircleLeft} className="nav_user" />

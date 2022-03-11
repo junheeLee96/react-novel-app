@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../css/NovelAbout/NovelaboutSubtitle.css';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import EditSubBtn from './NovelEdit/EditSubBtn';
 
 const NovelaboutSubtitle = ({

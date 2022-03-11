@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Novel from './Novel';
-import Loading from 'components/Loading';
 import '../../css/routes/Home/Home.css';
 import HomeSlider from './HomeSlider';
 import Pagenation from './Pagenation';

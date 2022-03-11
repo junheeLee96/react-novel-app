@@ -12,22 +12,26 @@ const NovelaboutShowContent = () => {
 
   const [content, setContent] = useState('');
   const [isClick, setIsClick] = useState(false);
-  // const [CurrentIdx, setCurrentIdx] = useState(0);
+  const [CurrentIdx, setCurrentIdx] = useState(0);
+  const [LastIdx, setLastIdx] = useState(0);
 
   const getContent = async () => {
     const data = await axios.get(`http://localhost:8000/api/novelshowcontent`, {
       params: TitleAndDate,
     });
-    const ConData = data.data[0];
-    // setCurrentIdx(ConData.idx);
-    setContent(ConData.content);
+    const ConData = data.data;
+    setCurrentIdx(ConData[0][0].idx);
+    setContent(ConData[0][0].content);
+    setLastIdx(ConData[1][0].idx);
   };
-
-  console.log('showcontent is render!');
 
   useEffect(() => {
     getContent();
   }, []);
+  useEffect(() => {
+    getContent();
+    setIsClick(!isClick);
+  }, [dateOfUpdate]);
 
   return (
     <>
@@ -36,6 +40,9 @@ const NovelaboutShowContent = () => {
         style={isClick ? { height: '84vh' } : { height: '100vh' }}
         onClick={() => {
           setIsClick(!isClick);
+        }}
+        onContextMenu={(e) => {
+          e.preventDefault();
         }}
       >
         {content ? (
@@ -51,22 +58,12 @@ const NovelaboutShowContent = () => {
         <div className="Content_nav" style={{ height: '5vh' }}>
           <ContentNav
             title={title}
-            // CurrentIdx={CurrentIdx}
+            CurrentIdx={CurrentIdx}
             dateOfUpdate={dateOfUpdate}
+            LastIdx={LastIdx}
           />
         </div>
       )}
-      {/*isClick ? (
-        <div className="Content_nav" style={{ height: '5vh' }}>
-          <ContentNav
-            title={title}
-            CurrentIdx={CurrentIdx}
-            dateOfUpdate={dateOfUpdate}
-          />
-        </div>
-      ) : (
-        ''
-      )*/}
     </>
   );
 };

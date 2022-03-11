@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 
 const Pagenation = ({
   getnovelLen,
@@ -8,7 +6,6 @@ const Pagenation = ({
   setCurrentPage,
   currentPage,
 }) => {
-  const [isclick, setIsClick] = useState(false);
   const pages = [];
   for (let i = 0; i < Math.ceil(getnovelLen / postPerPage); i++) {
     pages.push(i + 1);
