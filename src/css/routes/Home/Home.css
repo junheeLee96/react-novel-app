@@ -91,8 +91,13 @@
   height: 260px;
 }
 
-.Home a h4 {
+.novel h2 {
+  font-size: 25px;
+}
+
+.novel h4 {
   opacity: 0.5;
+  font-size: 15px;
 }
 
 .Pagenation {

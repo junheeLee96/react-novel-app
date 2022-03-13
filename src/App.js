@@ -3,6 +3,7 @@ import AppRouter from './routes/AppRouter';
 import { authService } from './fBase';
 import Header from './components/Header';
 import 'css/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   const [init, setInit] = useState(false);

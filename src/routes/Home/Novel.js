@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../css/routes/Home/Novel.css';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '../../ThemeContext/ThemeContext';
 
-const Novel = ({ Cpost, titleGet }) => {
+const Novel = ({ Cpost }) => {
+  const { getNtitle } = useContext(ThemeContext);
   const navigate = useNavigate();
   const ImgSrc = process.env.PUBLIC_URL + `/img/`;
   const OriginImage = process.env.PUBLIC_URL + '/img/originImg.jpg';
@@ -14,7 +16,7 @@ const Novel = ({ Cpost, titleGet }) => {
           key={idx}
           className="novel"
           onClick={() => {
-            titleGet(novel.title);
+            getNtitle(novel.title);
             navigate(`/novel/${novel.title}`);
           }}
         >

@@ -30,18 +30,19 @@ const HomeSlider = () => {
     }
     setActiveIndex(newIndex);
   };
-  /* 슬라이더 인터벌
+
+  //슬라이더 인터벌
+  /*
   useEffect(() => {
     const setInterTime = setInterval(() => {
       updateIndex(activeIndex + 1);
-    }, 1000);
+    }, 3000);
     return () => {
       if (setInterTime) {
         clearInterval(setInterTime);
       }
     };
-  });
-  */
+  });*/
 
   return (
     <div className="HomeSlider">

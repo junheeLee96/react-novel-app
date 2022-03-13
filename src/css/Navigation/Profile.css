@@ -1,0 +1,41 @@
+.Profile {
+  cursor: pointer;
+}
+
+.nav_user {
+}
+.ProfileBox {
+  z-index: 9999;
+  position: absolute;
+  right: 0%;
+  top: 98%;
+  width: 111px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.Profile_item {
+  background-color: #6a5acd;
+  color: white;
+  position: absolute;
+  z-index: 99999;
+  width: 99%;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  transition: transform 0.3s;
+  top: 10%;
+}
+
+.item {
+  cursor: pointer;
+}
+
+.triangle {
+  position: absolute;
+  bottom: 65%;
+  right: 0;
+  color: #6a5acd;
+  font-size: 30px;
+}

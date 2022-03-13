@@ -11,10 +11,22 @@ import NovelAdd from 'components/Novelabout/OwnNovelAdd/NovelAdd';
 import UpdateSub from 'components/Novelabout/NovelEdit/UpdateSub/UpdateSub';
 import NovelaboutShowContent from 'components/Novelabout/NovelaboutShowContent';
 import '../css/routes/AppRouter.css';
+import { ThemeContext } from 'ThemeContext/ThemeContext';
+import Loading from 'components/Loading/Loading';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
   const [Ntitle, getNtitle] = useState();
   const [isOwnNovelFromRouter, setisOwnNovelFromRouter] = useState(false);
+
+  const [isPost, setIsPost] = useState(false); //Loading 컴포넌트 on/off
+  const [isSpinnerLoading, setIsSpinnerLoading] = useState(true); //Spinner on/off
+
+  //createNovel
+  const [CreateComplete, setCreateComplete] = useState(false);
+  const [isExistSameNovel, setIsExistSameNovel] = useState(false);
+
+  //NovelAdd
+  const [AddComplete, setAddComplete] = useState(false);
 
   const getFromhomeTitle = (t) => {
     getNtitle(t);
@@ -33,63 +45,76 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
 
   return (
     <div className="AppRouter">
-      {isLoggedIn && (
-        <>
-          <Navigation isLoggedIn={isLoggedIn} userObj={userObj} />
-        </>
-      )}
-      <Routes>
-        {isLoggedIn ? (
+      <ThemeContext.Provider
+        value={{
+          Ntitle,
+          getNtitle,
+          isPost,
+          setIsPost,
+          isSpinnerLoading,
+          setIsSpinnerLoading,
+          CreateComplete,
+          setCreateComplete,
+          setIsExistSameNovel,
+          isExistSameNovel,
+          AddComplete,
+          setAddComplete,
+        }}
+      >
+        {isPost && <Loading />}
+        {isLoggedIn && (
           <>
-            <>
-              <Route
-                path="/"
-                element={
-                  <Home getFromhomeTitle={getFromhomeTitle} userObj={userObj} />
-                }
-              />
-              <Route
-                path="/novel/:title"
-                element={
-                  <Novelabout
-                    Ntitle={Ntitle}
-                    userObj={userObj}
-                    setisOwnNovelFromRouter={setisOwnNovelFromRouter}
-                  />
-                }
-              />
-              <Route
-                path="/read/:title/:dateOfUpdate"
-                element={<NovelaboutShowContent />}
-              />
-              <Route
-                path="createnovel"
-                element={<Createnovel userObj={userObj} />}
-              />
-              <Route
-                path="editprofile"
-                element={<Editprofile userObj={userObj} />}
-              />
-              <Route
-                path="/addnovel/:title"
-                element={<NovelAdd userObj={userObj} />}
-              />
-              {isOwnNovelFromRouter ? (
-                <>
-                  <Route
-                    path="/update/:title/:dateOfUpdate"
-                    element={<UpdateSub />}
-                  />
-                </>
-              ) : (
-                '잘못된 경로입니다.'
-              )}
-            </>
+            <Navigation isLoggedIn={isLoggedIn} userObj={userObj} />
           </>
-        ) : (
-          <Route path="/" element={<Auth />} />
         )}
-      </Routes>
+        <Routes>
+          {isLoggedIn ? (
+            <>
+              <>
+                <Route path="/" element={<Home userObj={userObj} />} />
+                <Route
+                  path="/novel/:title"
+                  element={
+                    <Novelabout
+                      Ntitle={Ntitle}
+                      userObj={userObj}
+                      setisOwnNovelFromRouter={setisOwnNovelFromRouter}
+                    />
+                  }
+                />
+                <Route
+                  path="/read/:title/:dateOfUpdate"
+                  element={<NovelaboutShowContent />}
+                />
+                <Route
+                  path="createnovel"
+                  element={<Createnovel userObj={userObj} />}
+                />
+                <Route
+                  path="editprofile"
+                  element={<Editprofile userObj={userObj} />}
+                />
+                <Route
+                  path="/addnovel/:title"
+                  element={<NovelAdd userObj={userObj} />}
+                />
+                {isOwnNovelFromRouter ? (
+                  <>
+                    <Route
+                      path="/update/:title/:dateOfUpdate"
+                      element={<UpdateSub />}
+                    />
+                  </>
+                ) : (
+                  '잘못된 경로입니다.'
+                )}
+              </>
+            </>
+          ) : (
+            <Route path="/" element={<Auth />} />
+          )}
+        </Routes>
+      </ThemeContext.Provider>
     </div>
   );
 };

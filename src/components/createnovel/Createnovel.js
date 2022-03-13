@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import '../../css/CreateNovel/Createnovel.css';
@@ -6,8 +6,15 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import LoadingSpinner from 'components/Loading/LoadingSpinner';
+import { ThemeContext } from '../../ThemeContext/ThemeContext';
 
 const Createnovel = ({ userObj }) => {
+  const { setIsPost } = useContext(ThemeContext);
+  const { setIsSpinnerLoading } = useContext(ThemeContext);
+  const { setCreateComplete } = useContext(ThemeContext);
+  const { setIsExistSameNovel } = useContext(ThemeContext);
+
   const inputRef = useRef();
   const fileInput = useRef();
   const [createnovel, setCreatenovel] = useState({
@@ -16,10 +23,7 @@ const Createnovel = ({ userObj }) => {
   });
 
   const [messagecondition, setMessagecondition] = useState(false);
-  const [createComplete, setCreateComplete] = useState(true);
-
   const [attachment, setAttachment] = useState();
-
   const [content, setContent] = useState('');
   const [uploadedImg, setUploadedImg] = useState({
     fileName: '',
@@ -35,11 +39,18 @@ const Createnovel = ({ userObj }) => {
   };
 
   const messageHandler = (res) => {
-    setMessagecondition(res.data);
-    setCreateComplete(res.data);
+    setIsSpinnerLoading(false);
+
+    if (res.data === false) {
+      setCreateComplete(true);
+    } else if (res.data === true) {
+      setIsExistSameNovel(true);
+    }
+    console.log(!res.data);
   };
 
   const onCreatenovelBtnClick = () => {
+    setIsPost(true);
     const id = userObj.uid;
     const formData = new FormData();
     if (content) {
@@ -96,10 +107,6 @@ const Createnovel = ({ userObj }) => {
     e.preventDefault();
   };
 
-  useEffect(() => {
-    console.log(uploadedImg);
-  }, [uploadedImg]);
-
   const onMessageConfirm = () => {
     setMessagecondition(false);
   };
@@ -110,84 +117,51 @@ const Createnovel = ({ userObj }) => {
 
   return (
     <div className="Createnovel">
-      <div className="Create_wrap">
-        {messagecondition ? (
-          <div>
-            <div>
-              이미 존재하는 소설입니다
-              <div className="message_comfirm_box" onClick={onMessageConfirm}>
-                확인
-              </div>
-            </div>
-          </div>
-        ) : (
-          ''
-        )}
+      <div className="form-wrapper">
+        <input
+          className="title-input"
+          type="text"
+          ref={inputRef}
+          placeholder="제목"
+          onChange={getValue}
+          name="title"
+        />
+        <CKEditor
+          editor={ClassicEditor}
+          data="<p>줄거리를 입력하세요.</p>"
+          onChange={(event, editor) => {
+            const data = editor.getData();
+            setCreatenovel({
+              ...createnovel,
+              plot: data,
+            });
+          }}
+        />
       </div>
-      <div>
-        {createComplete ? (
-          ''
-        ) : (
-          <div>
+
+      <>
+        <div>
+          {attachment ? (
             <div>
-              소설이 등록되었습니다.
-              <Link to="/">
-                <div
-                  className="message_comfirm_box"
-                  onClick={onCreatenovelCompleteBtn}
-                >
-                  확인
-                </div>
-              </Link>
+              <img src={attachment} width="100px" height="100px" alt="" />{' '}
+              <FontAwesomeIcon
+                icon={faXmark}
+                className="nav_user"
+                onClick={onClearAttachment}
+              />
             </div>
-          </div>
-        )}
-        <div className="form-wrapper">
-          <input
-            className="title-input"
-            type="text"
-            ref={inputRef}
-            placeholder="제목"
-            onChange={getValue}
-            name="title"
-          />
-          <CKEditor
-            editor={ClassicEditor}
-            data="<p>줄거리를 입력하세요.</p>"
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              setCreatenovel({
-                ...createnovel,
-                plot: data,
-              });
-            }}
-          />
+          ) : (
+            '선택된 커버 이미지가 없습니다.'
+          )}
         </div>
+        <form onSubmit={onSubmitF}>
+          <input type="file" onChange={onChangeI} ref={fileInput} />
+        </form>
+      </>
 
-        <>
-          <div>
-            {attachment ? (
-              <div>
-                <img src={attachment} width="100px" height="100px" alt="" />{' '}
-                <FontAwesomeIcon
-                  icon={faXmark}
-                  className="nav_user"
-                  onClick={onClearAttachment}
-                />
-              </div>
-            ) : (
-              '선택된 커버 이미지가 없습니다.'
-            )}
-          </div>
-          <form onSubmit={onSubmitF}>
-            <input type="file" onChange={onChangeI} ref={fileInput} />
-          </form>
-        </>
-
-        <button className="submit-button" onClick={onCreatenovelBtnClick}>
-          입력
-        </button>
-      </div>
+      <button className="submit-button" onClick={onCreatenovelBtnClick}>
+        입력
+      </button>
     </div>
   );
 };

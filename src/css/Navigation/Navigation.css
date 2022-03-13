@@ -8,7 +8,6 @@
   justify-content: center;
 }
 
-/*@media (max-width: 1920px) {}*/
 .nav-inside {
   display: flex;
   margin: 0 !important;
@@ -29,9 +28,17 @@ ul {
 }
 
 .Nav_ul {
+  text-decoration: none !important;
   padding-left: 0px;
   position: relative;
   padding-top: 1rem;
+}
+.Nav_ul:nth-child(2) {
+  margin-right: 7%;
+}
+
+.Nav_ul:not(:first-child) {
+  padding-top: 1.5rem;
 }
 
 a {

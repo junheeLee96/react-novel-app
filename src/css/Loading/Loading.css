@@ -1,0 +1,42 @@
+.Loading {
+  z-index: 99;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Loading_wrap {
+  z-index: 99;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  opacity: 0.3;
+}
+
+.Loading_item {
+  width: 20vw;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-size: 18px;
+}
+
+.Spinner {
+}
+
+.Message_box {
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  width: 25vw;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer !important;
+}

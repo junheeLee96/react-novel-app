@@ -6,12 +6,12 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons';
 const OwnNovelAddBtn = ({ title }) => {
   /*<FontAwesomeIcon icon={faPencil} className="nav_user" />*/
   return (
-    <div>
-      <Link to={`/addnovel/${title}`}>
+    <>
+      <Link to={`/addnovel/${title}`} style={{ marginTop: '4.5%' }}>
         작품 추가하기{''}
         <FontAwesomeIcon icon={faPencil} className="faPencil" />
       </Link>
-    </div>
+    </>
   );
 };
 

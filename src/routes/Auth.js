@@ -21,7 +21,7 @@ const Auth = () => {
     await authService.signInWithPopup(provider);
   };
   return (
-    <div className="Auth container">
+    <>
       <div className="vid-wrap">
         <video autoPlay={true} muted={true} loop={true}>
           <source src={video} type="video/mp4" />
@@ -34,7 +34,7 @@ const Auth = () => {
           {''} Continue with Google
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

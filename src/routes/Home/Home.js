@@ -14,10 +14,6 @@ const Home = ({ getFromhomeTitle, userObj }) => {
   const Lastindex = currentPage * postPerPage;
   const Firstindex = Lastindex - postPerPage;
 
-  const titleGet = (t) => {
-    getFromhomeTitle(t);
-  };
-
   const getNovels = async () => {
     const data = await axios.get('http://localhost:8000/api/getnovels');
     setGetnovel(data.data);
@@ -38,7 +34,7 @@ const Home = ({ getFromhomeTitle, userObj }) => {
     <div className="Home">
       <HomeSlider />
       <div className="home-wrap">
-        <Novel Cpost={currentPosts(getnovel)} titleGet={titleGet} />
+        <Novel Cpost={currentPosts(getnovel)} />
       </div>
       <Pagenation
         getnovelLen={getnovel.length}

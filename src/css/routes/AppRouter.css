@@ -10,6 +10,7 @@
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: auto;
+  text-decoration: none !important;
 }
 
 @media (max-width: 1400px) {
