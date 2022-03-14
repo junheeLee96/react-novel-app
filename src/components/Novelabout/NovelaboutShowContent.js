@@ -16,7 +16,7 @@ const NovelaboutShowContent = () => {
   const [LastIdx, setLastIdx] = useState(0);
 
   const getContent = async () => {
-    const data = await axios.get(`http://localhost:8000/api/novelshowcontent`, {
+    const data = await axios.get(`http://localhost:8000/novelshowcontent`, {
       params: TitleAndDate,
     });
     const ConData = data.data;

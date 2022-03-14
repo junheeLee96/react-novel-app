@@ -35,7 +35,7 @@ const App = () => {
           //refreshUser={refreshUser}
         />
       ) : (
-        'Initialzing...'
+        <div className="Initialzing">'Initialzing...'</div>
       )}
     </>
   );

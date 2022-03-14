@@ -28,6 +28,9 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
   //NovelAdd
   const [AddComplete, setAddComplete] = useState(false);
 
+  //EditNovel
+  const [EditComplete, setEditComplete] = useState(false);
+
   const getFromhomeTitle = (t) => {
     getNtitle(t);
   };
@@ -35,7 +38,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
   useEffect(() => {
     if (isLoggedIn && userObj) {
       axios
-        .post('http://localhost:8000/api/insert', {
+        .post('http://localhost:8000/insert', {
           id: userObj.uid,
           displayName: userObj.displayName,
         })
@@ -59,6 +62,8 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
           isExistSameNovel,
           AddComplete,
           setAddComplete,
+          EditComplete,
+          setEditComplete,
         }}
       >
         {isPost && <Loading />}

@@ -15,7 +15,7 @@ const Symbol = () => {
       }}
     >
       <FontAwesomeIcon icon={faBook} className="sym_book" />
-      사이트 제목{''}
+      <div className="Novelia">Novelia</div>
     </div>
   );
 };

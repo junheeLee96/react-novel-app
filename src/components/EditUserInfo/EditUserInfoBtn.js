@@ -13,7 +13,7 @@ const EditUserInfoBtn = ({ uid, displayName }) => {
   };
 
   return (
-    <div>
+    <div className="EditUserInfoBtn">
       {isUpload ? <NovelAddConfirmBox /> : ''}
       <button onClick={onEditUserInfoBtnClick}>설정 완료</button>
     </div>

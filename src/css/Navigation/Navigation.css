@@ -15,6 +15,16 @@
   width: 1200px;
   height: 80px;
 }
+
+.sym_book {
+  padding-top: 7%;
+}
+
+.Symbol {
+  display: flex;
+  flex-direction: row;
+}
+
 .HomeAndCreate {
   display: flex;
   flex-direction: row;
@@ -28,7 +38,6 @@ ul {
 }
 
 .Nav_ul {
-  text-decoration: none !important;
   padding-left: 0px;
   position: relative;
   padding-top: 1rem;
@@ -42,13 +51,13 @@ ul {
 }
 
 a {
-  text-decoration-line: none;
+  text-decoration: none !important;
 }
 a:link {
-  color: black;
+  color: black !important;
 }
 a:visited {
-  color: black;
+  color: black !important;
 }
 
 @media (max-width: 1400px) {
@@ -65,8 +74,17 @@ a:visited {
     margin-top: 10px;
     font-size: 15px;
     width: 130px;
+    padding-top: 5%;
   }
+
   .Symbol {
-    font-size: 20px;
+    padding-top: 25%;
+  }
+
+  .sym_book {
+    font-size: 25px;
+  }
+  .Novelia {
+    font-size: 18px;
   }
 }

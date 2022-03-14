@@ -13,7 +13,7 @@ const HomeSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const getRecentlyNovels = async () => {
-    const data = await axios.get('http://localhost:8000/api/recentlynovels');
+    const data = await axios.get('http://localhost:8000/recentlynovels');
     setRecentNovel(data.data);
   };
 
@@ -32,7 +32,6 @@ const HomeSlider = () => {
   };
 
   //슬라이더 인터벌
-  /*
   useEffect(() => {
     const setInterTime = setInterval(() => {
       updateIndex(activeIndex + 1);
@@ -42,7 +41,7 @@ const HomeSlider = () => {
         clearInterval(setInterTime);
       }
     };
-  });*/
+  });
 
   return (
     <div className="HomeSlider">
@@ -60,7 +59,9 @@ const HomeSlider = () => {
               key={idx}
             >
               <div className="item_TP">
-                <div className="NTitle">{novel.title}</div>
+                <div className="NTitle" style={{ fontSize: '30px' }}>
+                  {novel.title}
+                </div>
                 <div className="NPlot">{Parser(`${novel.plot}`)}</div>
               </div>
               <img

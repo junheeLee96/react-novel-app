@@ -13,13 +13,14 @@ const Profile = () => {
 
   const ShowProfile_Items = () => {
     setIsClick(!isClick);
-    console.log(isClick);
   };
 
   const onSignOutClick = () => {
+    setIsClick(!isClick);
     authService.signOut();
   };
   const onProfileClick = () => {
+    setIsClick(!isClick);
     navigate('editprofile');
   };
   /*

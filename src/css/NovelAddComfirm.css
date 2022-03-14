@@ -12,6 +12,7 @@
   border-radius: 5px;
   margin-top: 40px;
   vertical-align: middle;
+  display: flex;
   align-items: center;
   justify-self: center;
 }

@@ -11,8 +11,11 @@ const Loading = () => {
   const { setCreateComplete } = useContext(ThemeContext);
   const { isExistSameNovel } = useContext(ThemeContext);
   const { setIsExistSameNovel } = useContext(ThemeContext);
+  const { AddComplete } = useContext(ThemeContext);
   const { setAddComplete } = useContext(ThemeContext);
   const { Ntitle } = useContext(ThemeContext);
+  const { EditComplete } = useContext(ThemeContext);
+  const { setEditComplete } = useContext(ThemeContext);
 
   const navigate = useNavigate();
 
@@ -32,9 +35,11 @@ const Loading = () => {
     navigate(`/novel/${Ntitle}`);
   };
 
-  useEffect(() => {
-    console.log(isExistSameNovel);
-  }, [isExistSameNovel]);
+  const onEditComplete_Btn_Click = () => {
+    setEditComplete(false);
+    setIsPost(false);
+    navigate(`/novel/${Ntitle}`);
+  };
 
   return (
     <>
@@ -70,8 +75,16 @@ const Loading = () => {
               ) : (
                 ''
               )}
-              {setAddComplete ? (
+              {AddComplete ? (
                 <div className="Message_box" onClick={onAddComplete_Btn_Click}>
+                  완료되었습니다.
+                  <div>확인</div>
+                </div>
+              ) : (
+                ''
+              )}
+              {EditComplete ? (
+                <div className="Message_box" onClick={onEditComplete_Btn_Click}>
                   완료되었습니다.
                   <div>확인</div>
                 </div>

@@ -19,7 +19,7 @@ const Novelabout = ({ userObj, setisOwnNovelFromRouter }) => {
   const [displayName, setDisplayName] = useState('');
 
   const getNovelAbout = async () => {
-    const data = await axios.get(`http://localhost:8000/api/novelabout`, {
+    const data = await axios.get(`http://localhost:8000/novelabout`, {
       params: title,
     });
     const getData = data.data;

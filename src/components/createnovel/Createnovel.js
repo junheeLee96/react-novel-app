@@ -39,13 +39,12 @@ const Createnovel = ({ userObj }) => {
   };
 
   const messageHandler = (res) => {
-    setIsSpinnerLoading(false);
-
     if (res.data === false) {
       setCreateComplete(true);
     } else if (res.data === true) {
       setIsExistSameNovel(true);
     }
+    setIsSpinnerLoading(false);
     console.log(!res.data);
   };
 
@@ -57,7 +56,7 @@ const Createnovel = ({ userObj }) => {
       formData.append('img', content);
       axios.post('http://localhost:8000/upload', formData).then((res) => {
         axios
-          .post('http://localhost:8000/api/create', {
+          .post('http://localhost:8000/create', {
             title: createnovel.title,
             plot: createnovel.plot,
             id: id,
@@ -70,7 +69,7 @@ const Createnovel = ({ userObj }) => {
       });
     } else {
       axios
-        .post('http://localhost:8000/api/create', {
+        .post('http://localhost:8000/create', {
           title: createnovel.title,
           plot: createnovel.plot,
           id: id,

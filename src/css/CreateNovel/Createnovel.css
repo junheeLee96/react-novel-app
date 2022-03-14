@@ -36,6 +36,9 @@
   border-radius: 5px;
   margin-top: 40px;
   vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ck.ck-editor__editable:not(.ck-editor__nested-editable) {

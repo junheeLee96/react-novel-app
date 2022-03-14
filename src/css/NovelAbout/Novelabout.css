@@ -82,3 +82,17 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+@media (max-width: 1400px) {
+  .Novelaboout_showbox {
+    margin: 0 5% 0 5%;
+  }
+  .Novelabout_head {
+    height: 30vh;
+  }
+
+  .Novelabout_img img {
+    width: 40vw;
+    height: 100%;
+  }
+}

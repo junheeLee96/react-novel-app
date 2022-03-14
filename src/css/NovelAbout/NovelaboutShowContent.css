@@ -2,11 +2,11 @@
   width: 100vw;
   display: flex;
   justify-content: center;
+  background-color: rgb(247, 247, 247);
 }
 
 .ShowContent {
   width: 730px;
-  background-color: rgb(247, 247, 247);
   cursor: default;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -47,4 +47,10 @@
   -webkit-user-select: none;
   -khtml-user-select: none;
   user-select: none;
+}
+
+@media (max-width: 1400px) {
+  .ShowContent {
+    margin: 0 5% 0 5%;
+  }
 }

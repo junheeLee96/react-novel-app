@@ -15,7 +15,7 @@ const Home = ({ getFromhomeTitle, userObj }) => {
   const Firstindex = Lastindex - postPerPage;
 
   const getNovels = async () => {
-    const data = await axios.get('http://localhost:8000/api/getnovels');
+    const data = await axios.get('http://localhost:8000/getnovels');
     setGetnovel(data.data);
     setInit(true);
   };

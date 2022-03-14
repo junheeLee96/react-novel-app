@@ -15,7 +15,7 @@ const UpdateSub = () => {
   const [originContent, setOriginContent] = useState('');
 
   const onPageLoad = async () => {
-    const data = await axios.get(`http://localhost:8000/api/novelupdate`, {
+    const data = await axios.get(`http://localhost:8000/novelupdate`, {
       params: titleAndDate,
     });
     setGetValue({

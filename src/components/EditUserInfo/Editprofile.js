@@ -2,13 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import EditUserInfoBtn from './EditUserInfoBtn';
+import '../../css/EditProfile/EditProfile.css';
 
 const Editprofile = ({ userObj }) => {
   const uid = userObj.uid;
   const [displayName, setDisplayName] = useState([]);
 
   const getUserInfo = async () => {
-    const data = await axios.get(`http://localhost:8000/api/userinfo`, {
+    const data = await axios.get(`http://localhost:8000/userinfo`, {
       params: uid,
     });
     setDisplayName(data.data[0].displayName);
@@ -19,7 +20,7 @@ const Editprofile = ({ userObj }) => {
   }, []);
 
   return (
-    <div>
+    <div className="Editprofile">
       <div>
         <ul>
           <li>UID: {uid}</li>
