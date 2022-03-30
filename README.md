@@ -17,10 +17,12 @@
 ### 사용예제
 
 홈 화면
+
 ![novel1](https://user-images.githubusercontent.com/89452058/160937009-1f00bee6-4566-4d8d-9b7c-bf1b7dcf88f5.png)
 
 
 소설 등록
+
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/89452058/160939652-c796013a-0634-4ea7-86ed-edd4fa9d4215.gif)
 
 ### 파일
