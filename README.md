@@ -68,6 +68,9 @@ components/Novelabout/OwnNovelAdd/NovelAdd.js
 components/Novelabout/NovelEdit/UpdateSub/UpdateSub.js
 > 소설의 작가가 본인일 시, 해당 회차를 수정하는 기능을 수행한다.
 
+components/EditUserInfo/EditProfile.js
+> 유저의 프로필과 별칭을 업데이트 할 수 있는 페이지다. firebase를 통한 로그아웃 기능은 components/Navigation/Profile.js에 넣어두었다.
+
 
 ### 아쉬운 점
 
