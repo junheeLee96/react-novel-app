@@ -21,7 +21,7 @@
 
 
 소설 등록
-https://user-images.githubusercontent.com/89452058/160939125-7135437c-19b7-4814-a844-ad29e4834495.mp4
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/89452058/160939652-c796013a-0634-4ea7-86ed-edd4fa9d4215.gif)
 
 ### 파일
 fBase.js
