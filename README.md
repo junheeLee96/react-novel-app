@@ -7,6 +7,8 @@
 프론트 엔드라는 직업을 처음 알게 된 계기는 웹 소설 플랫폼을 이용하면서였습니다.
 언젠가 나도 플랫폼을 만들어보고자 하는 마음가짐으로 개발자 공부에 뛰어들었고 작게나마 이 프로젝트를 시작했습니다.
 
+<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
+
 ### 개발환경 설치
 
 ```
