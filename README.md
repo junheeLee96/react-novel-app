@@ -33,6 +33,16 @@ routes/Auth.js
 routes/Home.js
 > 로그인 성공 시, 사용자에게 보여줄 화면. 소설 등록 파일인 conponents/createnovel/Createnovel.js와 conponents/Navigation/Navigation.js파일 등을 담고있다.
 
+components/Novelabout/Novelabout.js
+> 소설의 이미지, 플롯, 작가명, 회차 등을 보여주는 파일이다.
+
+components/Novelabout/OwnNovelAdd/NovelAdd.js
+> 소설의 작가가 본인일 시, 회차를 추가하는 기능을 수행하는 파일이다.
+
+components/Novelabout/NovelEdit/UpdateSub/UpdateSub.js
+> 소설의 작가가 본인일 시, 해당 회차를 수정하는 기능을 수행한다.
+
+
 ### Heroku 배포 시 오류
 
 Application error
