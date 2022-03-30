@@ -7,7 +7,13 @@
 프론트 엔드라는 직업을 처음 알게 된 계기는 웹 소설 플랫폼을 이용하면서였습니다.
 언젠가 나도 플랫폼을 만들어보고자 하는 마음가짐으로 개발자 공부에 뛰어들었고 작게나마 이 프로젝트를 시작했습니다.
 
-<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
+## 기술스택
+
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">
+<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+<img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 
 ### 개발환경 설치
 
