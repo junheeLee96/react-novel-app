@@ -69,7 +69,8 @@ components/Novelabout/NovelEdit/UpdateSub/UpdateSub.js
 > 소설의 작가가 본인일 시, 해당 회차를 수정하는 기능을 수행한다.
 
 
-### Heroku 배포 시 오류
+### 아쉬운 점
 
-Application error
-> 
+원래 계획은 Heroku 또는 AWS에 배포까지 실행할 계획이었다.
+하지만 Heroku에 배포 시, Server 폴더에서 문제가 발생하였고 배포는 성공하지 못했다.
+다만 깃허브가 아닌 다른 곳에 배포를 실행하고 오류를 찾아가는 과정에서 많은 점을 배웠다.
