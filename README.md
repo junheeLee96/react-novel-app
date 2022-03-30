@@ -25,15 +25,15 @@ https://user-images.githubusercontent.com/89452058/160936933-89017970-4ba6-4a82-
 
 ### 파일
 fBase.js
-> > 파이어베이스의 서비스를 가져오기 위한 파일. 프로젝트에서는 로그인 기능만 사용했다.
+> 파이어베이스의 서비스를 가져오기 위한 파일. 프로젝트에서는 로그인 기능만 사용했다.
 
 routes/Auth.js
-> > 파이어베이스의 인증을 요청/허용하기 위한 파일.
+> 파이어베이스의 인증을 요청/허용하기 위한 파일.
 
 routes/Home.js
-> > 로그인 성공 시, 사용자에게 보여줄 화면. 소설 등록 파일인 conponents/createnovel/Createnovel.js와 conponents/Navigation/Navigation.js파일 등을 담고있다.
+> 로그인 성공 시, 사용자에게 보여줄 화면. 소설 등록 파일인 conponents/createnovel/Createnovel.js와 conponents/Navigation/Navigation.js파일 등을 담고있다.
 
 ### Heroku 배포 시 오류
 
 Application error
-> > 
+> 
