@@ -7,7 +7,7 @@
 프론트 엔드라는 직업을 처음 알게 된 계기는 웹 소설 플랫폼을 이용하면서였습니다.
 언젠가 나도 플랫폼을 만들어보고자 하는 마음가짐으로 개발자 공부에 뛰어들었고 작게나마 이 프로젝트를 시작했습니다.
 
-## 기술스택
+## 사용기술
 
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
 <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">
