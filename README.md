@@ -51,29 +51,31 @@
 
 ### 파일
 fBase.js
-> 파이어베이스의 서비스를 가져오기 위한 파일. 프로젝트에서는 로그인 기능만 사용했다.
+> 파이어베이스의 서비스를 가져오기 위한 파일. 프로젝트에서는 로그인 기능만 사용했습니다.
 
 routes/Auth.js
-> 파이어베이스의 인증을 요청/허용하기 위한 파일.
+> 파이어베이스의 인증을 요청/허용하기 위한 파일입니다.
 
 routes/Home.js
-> 로그인 성공 시, 사용자에게 보여줄 화면. 소설 등록 파일인 conponents/createnovel/Createnovel.js와 conponents/Navigation/Navigation.js파일 등을 담고있다.
+> 로그인 성공 시, 사용자에게 보여줄 화면. 소설 등록 파일인 conponents/createnovel/Createnovel.js와 conponents/Navigation/Navigation.js파일 등을 담고있습니다.
 
 components/Novelabout/Novelabout.js
-> 소설의 이미지, 플롯, 작가명, 회차 등을 보여주는 파일이다.
+> 소설의 이미지, 플롯, 작가명, 회차 등을 보여주는 파일입니다.
 
 components/Novelabout/OwnNovelAdd/NovelAdd.js
-> 소설의 작가가 본인일 시, 회차를 추가하는 기능을 수행하는 파일이다.
+> 소설의 작가가 본인일 시, 회차를 추가하는 기능을 수행하는 파일입니다.
 
 components/Novelabout/NovelEdit/UpdateSub/UpdateSub.js
-> 소설의 작가가 본인일 시, 해당 회차를 수정하는 기능을 수행한다.
+> 소설의 작가가 본인일 시, 해당 회차를 수정하는 기능을 수행합니다.
 
 components/EditUserInfo/EditProfile.js
 > 유저의 프로필과 별칭을 업데이트 할 수 있는 페이지다. firebase를 통한 로그아웃 기능은 components/Navigation/Profile.js에 넣어두었다.
 
 
-### 아쉬운 점
+### 배운 점/ 아쉬운 점
 
 원래 계획은 Heroku 또는 AWS에 배포까지 실행할 계획이었다.
-하지만 Heroku에 배포 시, Server 폴더에서 문제가 발생하였고 배포는 성공하지 못했다.
-다만 깃허브가 아닌 다른 곳에 배포를 실행하고 오류를 찾아가는 과정에서 많은 점을 배웠다.
+하지만 Heroku에 배포 시, Server 폴더에서 문제가 발생하였고 배포는 성공하지 못했습니다.
+또한 상태관리/Props drilling을 최소화하기 위해 redux가 아닌 ContextAPI를 선택했습니다.
+때문에 타입스크립트를 사용하지 않아 state의 관리가 까다로웠다.
+다만, Heroku 배포 시 오류를 찾아나가며 Hroku 이용법을 습득한 점과 Context API를 사용한 것은 앞으로 꾸준히 가져가야 할 이점으로 생각합니다
