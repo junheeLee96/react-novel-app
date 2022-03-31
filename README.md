@@ -18,12 +18,12 @@
 ### 개발환경 설치
 
 ```
-> >Client
-> > > npm install @ckeditor/ckeditor5-react @fortawesome/fontawesome-free @fortawesome/fontawesome-svg-core" 등등
-> > > npm i axios bootstrap firebase html-react-parser react-router-dom
+Client
+ npm install @ckeditor/ckeditor5-react @fortawesome/fontawesome-free @fortawesome/fontawesome-svg-core" 등등
+ npm i axios bootstrap firebase html-react-parser react-router-dom
 
-> >Server
-> > > npm install body-parser cors express dotenv mysql nodemon
+Server
+ npm install body-parser cors express dotenv mysql nodemon
   
 ```
 
